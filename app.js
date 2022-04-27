@@ -44,8 +44,8 @@ function handleGuess(correctSpot, userGuess) {
     // then increment the guesses
 
     if (userGuess === true || userGuess === false) {
-        incorrectGuesses++; 
-        correctGuesses++;
+        userGuess++; 
+        
 
     }
     
