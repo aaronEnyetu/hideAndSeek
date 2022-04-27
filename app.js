@@ -44,20 +44,22 @@ function handleGuess(correctSpot, userGuess) {
     boulderContainer.classList.remove('face');
     // then increment the guesses
 
-        totalGuesses++;
+    totalGuesses++;
         //console.log(totalGuesses)
         
-        if (correctSpot === userGuess) {
-            correctGuesses++;
+        // then if the user guess is correct, increment the correct guesses
+    if (correctSpot === userGuess) {
+        correctGuesses++;
             //console.log(totalGuesses, incorrectGuesses, correctGuesses);
         
-        } else {
-            incorrectGuesses++;
+    } else {
+        incorrectGuesses++;
             //console.log(totalGuesses, incorrectGuesses, correctGuesses);
-        }
-        totalEl.textContent = totalGuesses;
-        lossesEl.textContent = incorrectGuesses;
-        winsEl.textContent = correctGuesses;
+    }
+    // update the DOM to show this change to the user (including the losses, not tracked directly in state)
+    totalEl.textContent = totalGuesses;
+    lossesEl.textContent = incorrectGuesses;
+    winsEl.textContent = correctGuesses;
 
 
     
@@ -88,6 +90,6 @@ function handleGuess(correctSpot, userGuess) {
     }
 
 
-    // then if the user guess is correct, increment the correct guesses
-    // update the DOM to show this change to the user (including the losses, not tracked directly in state)
+    
+    
 }
