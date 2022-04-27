@@ -16,7 +16,6 @@ const hidingPlaces = ['tree', 'shed', 'boulder'];
 
 let correctGuesses = 0;
 let totalGuesses = 0;
-let incorrectGuesses = 0;
 
 shedButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
@@ -38,56 +37,9 @@ boulderButton.addEventListener('click', () => {
 
 function handleGuess(correctSpot, userGuess) {
     // reset the styles
-    
-    shedContainer.classList.remove('face');
-    treeContainer.classList.remove('face');
-    boulderContainer.classList.remove('face');
     // then increment the guesses
-
-        totalGuesses++;
-        //console.log(totalGuesses)
-        
-        if (correctSpot === userGuess) {
-            correctGuesses++;
-            //console.log(totalGuesses, incorrectGuesses, correctGuesses);
-        
-        } else {
-            incorrectGuesses++;
-            //console.log(totalGuesses, incorrectGuesses, correctGuesses);
-        }
-        totalEl.textContent = totalGuesses;
-        lossesEl.textContent = incorrectGuesses;
-        winsEl.textContent = correctGuesses;
-
-
-    
-    
     // then grab the appropriate container element for the correct guess from the DOM
     // then add the face class to that element so that the face shows up
-    if (correctSpot === 'shed') {
-        shedContainer.classList.add('face');
-        treeContainer.classList.remove('face');
-        boulderContainer.classList.remove('face');
-        
-        
-    }
-    else if (correctSpot === 'tree') {
-        treeContainer.classList.add('face');
-        shedContainer.classList.remove('face');
-        boulderContainer.classList.remove('face');
-    
-        
-    }
-    else {
-        boulderContainer.classList.add('face');
-        treeContainer.classList.remove('face');
-        shedContainer.classList.remove('face');
-        
-        
-
-    }
-
-
     // then if the user guess is correct, increment the correct guesses
     // update the DOM to show this change to the user (including the losses, not tracked directly in state)
 }
