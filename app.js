@@ -15,7 +15,7 @@ const winsEl = document.getElementById('wins');
 const hidingPlaces = ['tree', 'shed', 'boulder'];
 
 let correctGuesses = 0;
-let totalGuesses = 0;
+let incorrectGuesses = 0;
 
 shedButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
@@ -37,9 +37,53 @@ boulderButton.addEventListener('click', () => {
 
 function handleGuess(correctSpot, userGuess) {
     // reset the styles
+    
+    shedContainer.classList.remove('face');
+    treeContainer.classList.remove('face');
+    boulderContainer.classList.remove('face');
     // then increment the guesses
+
+    if (userGuess === true || userGuess === false) {
+        incorrectGuesses++; 
+        correctGuesses++;
+
+    }
+    
     // then grab the appropriate container element for the correct guess from the DOM
     // then add the face class to that element so that the face shows up
+    if (correctSpot === 'shed') {
+        shedContainer.classList.add('face');
+        treeContainer.classList.remove('face');
+        boulderContainer.classList.remove('face');
+        
+        totalEl.textContent = correctGuesses + incorrectGuesses;
+        lossesEl.textContent = incorrectGuesses;
+        winsEl.textContent = correctGuesses;
+
+    }
+    else if (correctSpot === 'tree') {
+        treeContainer.classList.add('face');
+        shedContainer.classList.remove('face');
+        boulderContainer.classList.remove('face');
+       
+        totalEl.textContent = correctGuesses + incorrectGuesses;
+        lossesEl.textContent = incorrectGuesses;
+        winsEl.textContent = correctGuesses;
+
+    }
+    else {
+        boulderContainer.classList.add('face');
+        treeContainer.classList.remove('face');
+        shedContainer.classList.remove('face');
+        
+        totalEl.textContent = correctGuesses + incorrectGuesses;
+        lossesEl.textContent = incorrectGuesses;
+        winsEl.textContent = correctGuesses;
+
+
+    }
+
+
     // then if the user guess is correct, increment the correct guesses
     // update the DOM to show this change to the user (including the losses, not tracked directly in state)
 }
