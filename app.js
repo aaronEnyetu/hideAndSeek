@@ -15,6 +15,7 @@ const winsEl = document.getElementById('wins');
 const hidingPlaces = ['tree', 'shed', 'boulder'];
 
 let correctGuesses = 0;
+let totalGuesses = 0;
 let incorrectGuesses = 0;
 
 shedButton.addEventListener('click', () => {
@@ -43,11 +44,23 @@ function handleGuess(correctSpot, userGuess) {
     boulderContainer.classList.remove('face');
     // then increment the guesses
 
-    if (userGuess === true || userGuess === false) {
-        userGuess++; 
+        totalGuesses++;
+        //console.log(totalGuesses)
         
+        if (correctSpot === userGuess) {
+            correctGuesses++;
+            //console.log(totalGuesses, incorrectGuesses, correctGuesses);
+        
+        } else {
+            incorrectGuesses++;
+            //console.log(totalGuesses, incorrectGuesses, correctGuesses);
+        }
+        totalEl.textContent = totalGuesses;
+        lossesEl.textContent = incorrectGuesses;
+        winsEl.textContent = correctGuesses;
 
-    }
+
+    
     
     // then grab the appropriate container element for the correct guess from the DOM
     // then add the face class to that element so that the face shows up
@@ -56,30 +69,21 @@ function handleGuess(correctSpot, userGuess) {
         treeContainer.classList.remove('face');
         boulderContainer.classList.remove('face');
         
-        totalEl.textContent = correctGuesses + incorrectGuesses;
-        lossesEl.textContent = incorrectGuesses;
-        winsEl.textContent = correctGuesses;
-
+        
     }
     else if (correctSpot === 'tree') {
         treeContainer.classList.add('face');
         shedContainer.classList.remove('face');
         boulderContainer.classList.remove('face');
-       
-        totalEl.textContent = correctGuesses + incorrectGuesses;
-        lossesEl.textContent = incorrectGuesses;
-        winsEl.textContent = correctGuesses;
-
+    
+        
     }
     else {
         boulderContainer.classList.add('face');
         treeContainer.classList.remove('face');
         shedContainer.classList.remove('face');
         
-        totalEl.textContent = correctGuesses + incorrectGuesses;
-        lossesEl.textContent = incorrectGuesses;
-        winsEl.textContent = correctGuesses;
-
+        
 
     }
 
